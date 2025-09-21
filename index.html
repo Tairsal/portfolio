@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>תאיר סלומי · פורטפוליו</title>
+  <meta name="description" content="הפורטפוליו של תאיר סלומי – Full‑Stack & AI Developer" />
+  <!-- Tailwind CDN (no build needed) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heebo: ['Heebo', 'system-ui', 'Arial']
+          }
+        }
+      },
+      darkMode: 'class'
+    }
+  </script>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <!-- Icons (Lucide via unpkg) -->
+  <script type="module" src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    /* Fancy glow */
+    .glow { box-shadow: 0 10px 40px rgba(59,130,246,.35), 0 2px 10px rgba(59,130,246,.2); }
+    .glass { backdrop-filter: blur(8px); background: rgba(255,255,255,.7); }
+    .dark .glass { background: rgba(17,24,39,.6); }
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(16px); transition: all .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* Scroll progress bar */
+    #progress { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(90deg,#60a5fa,#22c55e); width: 0; z-index: 60; }
+    /* Tooltip */
+    .tip { position: relative; }
+    .tip:hover::after { content: attr(data-tip); position: absolute; bottom: 120%; right: 50%; transform: translateX(50%); padding: .35rem .5rem; border-radius: .5rem; white-space: nowrap; font-size: .75rem; background: #111827; color: #fff; }
+  </style>
+</head>
+<body class="font-heebo bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+  <!-- Progress Bar -->
+  <div id="progress"></div>
+
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 border-b border-slate-200/60 dark:border-slate-700/70 bg-white/80 dark:bg-slate-900/70 glass">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
+      <a href="#home" class="flex items-center gap-3 group">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-sky-400 text-white glow">TS</span>
+        <div>
+          <h1 class="text-lg font-extrabold leading-4">תאיר סלומי</h1>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Full‑Stack · AI · Algorithms</p>
+        </div>
+      </a>
+      <nav class="ms-auto hidden md:flex items-center gap-2 text-sm">
+        <a href="#projects" class="px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">פרויקטים</a>
+        <a href="#skills" class="px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">יכולות</a>
+        <a href="#about" class="px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">עליי</a>
+        <a href="#contact" class="px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">יצירת קשר</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button id="themeBtn" class="tip px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800" data-tip="מצב כהה/בהיר" aria-label="Toggle Theme">
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4 12H2m20 0h-2M5 5l-1.5-1.5M20.5 20.5L19 19M19 5l1.5-1.5M4.5 20.5L5.99 19"/></svg>
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a class="tip px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800" href="https://github.com/" target="_blank" rel="noreferrer" data-tip="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.12.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.38-1.34-1.75-1.34-1.75-1.09-.75.08-.74.08-.74 1.2.09 1.84 1.25 1.84 1.25 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.34-5.46-5.95 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.9 1.24 3.22 0 4.62-2.8 5.64-5.47 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .5z"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none opacity-20 dark:opacity-30" aria-hidden="true">
+      <svg class="w-[120%] h-[120%] -translate-x-10 -translate-y-10" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stop-color="#60a5fa"/>
+            <stop offset="100%" stop-color="#22c55e"/>
+          </linearGradient>
+        </defs>
+        <g opacity="0.35">
+          <circle cx="100" cy="80" r="120" stroke="url(#g1)" stroke-width="2"/>
+          <circle cx="700" cy="500" r="160" stroke="url(#g1)" stroke-width="2"/>
+          <circle cx="420" cy="280" r="220" stroke="url(#g1)" stroke-width="2"/>
+        </g>
+      </svg>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 py-16 md:py-24">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div class="reveal">
+          <span class="inline-flex items-center gap-2 text-sm px-3 py-1 rounded-full bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300">מחפש/ת Full‑Stack / AI · פנוי/ה להצעות</span>
+          <h2 class="mt-4 text-3xl md:text-5xl font-black leading-tight">היי, אני תאיר סלומי 👋<br/>מפתח/ת Full‑Stack עם אהבה ל‑AI ואלגוריתמים</h2>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">בוגר/ת B.Sc מתמטיקה ומדעי המחשב. בונה מוצרים מקצה לקצה: React, FastAPI, Node, MongoDB/SQL, ו‑Google Maps. כאן תמצאו שלושה פרויקטים נבחרים שלי.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#projects" class="px-5 py-3 rounded-2xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 glow">צפייה בפרויקטים</a>
+            <a href="#contact" class="px-5 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">יצירת קשר</a>
+          </div>
+          <div class="mt-6 flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+            <span class="inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg> אתר דף אחד אינטראקטיבי</span>
+            <span class="inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg> מצב כהה/בהיר</span>
+            <span class="inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2 4 4 8-8 4 4"/></svg> רספונסיבי ל‑נייד</span>
+          </div>
+        </div>
+        <div class="reveal md:order-first md:rtl:order-none">
+          <div class="rounded-3xl overflow-hidden glow">
+            <img alt="Portfolio preview" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1600&auto=format&fit=crop" class="w-full object-cover max-h-[420px]"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-16 md:py-24 bg-gradient-to-b from-transparent to-slate-100/70 dark:from-transparent dark:to-slate-800/40">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal text-center">
+        <h3 class="text-2xl md:text-4xl font-extrabold">פרויקטים נבחרים</h3>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">שלושה פרויקטים שמדגימים יכולות פיתוח, ארכיטקטורה ו‑AI.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mt-10">
+        <!-- Ahavtiya -->
+        <article class="reveal group rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all">
+          <div class="relative h-44 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1515165562835-c3b8c522b41b?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform" alt="Ahavtiya"/>
+            <span class="absolute top-3 right-3 text-xs bg-sky-600 text-white px-2 py-1 rounded-full">MERN</span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h4 class="text-xl font-bold">Ahavtiya E‑commerce</h4>
+            <p class="text-slate-600 dark:text-slate-300">אתר חנות מתנות בעיצוב נקי: קטלוג, סל, הזדהות JWT, העלאות ל‑Cloudinary, דשבורד אדמין וצ'אטבוט AI לחיפוש מוצרים.</p>
+            <ul class="flex flex-wrap gap-2 text-xs text-slate-600 dark:text-slate-300">
+              <li class="px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">React</li>
+              <li class="px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Node/Express</li>
+              <li class="px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">MongoDB</li>
+              <li class="px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Cloudinary</li>
+            </ul>
+            <div class="flex gap-3">
+              <a href="https://github.com/Tairsal/Ahavtiya" target="_blank" class="text-sky-600 hover:underline">GitHub</a>
+              <button class="text-slate-700 dark:text-slate-200 hover:underline" data-open="modal-ahavtiya">פרטים</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- YelpCamp -->
+        <article class="reveal group rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all">
+          <div class="relative h-44 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1500835556837-99ac94a94552?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform" alt="YelpCamp"/>
+            <span class="absolute top-3 right-3 text-xs bg-emerald-600 text-white px-2 py-1 rounded-full">Node</span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h4 class="text-xl font-bold">YelpCamp WebApp</h4>
+            <p class="text-slate-600 dark:text-slate-300">אפליקציה לקמפינג עם CRUD למחנות וביקורות, הרשאות/תפקידים, ומפות/תמונות.</p>
+            <ul class="flex flex-wrap gap-2 text-xs text-slate-600 dark:text-slate-300">
+              <li class="px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Node/Express</li>
+              <li class="px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">EJS</li>
+              <li class="px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">MongoDB</li>
+            </ul>
+            <div class="flex gap-3">
+              <a href="https://github.com/Tairsal/YelpCamp" target="_blank" class="text-sky-600 hover:underline">GitHub</a>
+              <button class="text-slate-700 dark:text-slate-200 hover:underline" data-open="modal-yelp">פרטים</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- DRT -->
+        <article class="reveal group rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all">
+          <div class="relative h-44 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform" alt="DRT"/>
+            <span class="absolute top-3 right-3 text-xs bg-indigo-600 text-white px-2 py-1 rounded-full">AI + Maps</span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h4 class="text-xl font-bold">DRT – תחבורה לפי ביקוש</h4>
+            <p class="text-slate-600 dark:text-slate-300">פרויקט גמר: אלגוריתם שיבוץ נסיעות עם אילוצים (מגדר/פקקים/קירבה למסלול) וסימולטור חי עם React + FastAPI + Google Maps.</p>
+            <ul class="flex flex-wrap gap-2 text-xs text-slate-600 dark:text-slate-300">
+              <li class="px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">React</li>
+              <li class="px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">FastAPI</li>
+              <li class="px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Google Maps API</li>
+              <li class="px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Python</li>
+            </ul>
+            <div class="flex gap-3">
+              <a href="https://github.com/Tairsal/DRT-Plus" target="_blank" class="text-sky-600 hover:underline">GitHub</a>
+              <button class="text-slate-700 dark:text-slate-200 hover:underline" data-open="modal-drt">פרטים</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal text-center">
+        <h3 class="text-2xl md:text-4xl font-extrabold">יכולות וכלים</h3>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">סטאק טכנולוגי מ‑Front עד Back, עם דגש על ביצועים וחוויית משתמש.</p>
+      </div>
+      <div class="reveal grid md:grid-cols-3 gap-6 mt-10">
+        <div class="rounded-3xl p-6 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+          <h4 class="font-bold text-lg">Frontend</h4>
+          <ul class="mt-3 grid grid-cols-2 gap-2 text-sm text-slate-600 dark:text-slate-300">
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">React/Vite</li>
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">Next.js</li>
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">Tailwind</li>
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">Bootstrap</li>
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">EJS</li>
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">Maps</li>
+          </ul>
+        </div>
+        <div class="rounded-3xl p-6 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+          <h4 class="font-bold text-lg">Backend</h4>
+          <ul class="mt-3 grid grid-cols-2 gap-2 text-sm text-slate-600 dark:text-slate-300">
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">Node/Express</li>
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">FastAPI</li>
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">Python</li>
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">REST</li>
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">Auth/JWT</li>
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">Webhooks</li>
+          </ul>
+        </div>
+        <div class="rounded-3xl p-6 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+          <h4 class="font-bold text-lg">Data & AI</h4>
+          <ul class="mt-3 grid grid-cols-2 gap-2 text-sm text-slate-600 dark:text-slate-300">
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">MongoDB</li>
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">PostgreSQL/MySQL</li>
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">scikit‑learn</li>
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">Transformers</li>
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">Vector Search</li>
+            <li class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">Data Viz</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-16 md:py-24 bg-slate-100/70 dark:bg-slate-800/40">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal grid md:grid-cols-3 gap-8 items-start">
+        <div class="md:col-span-2">
+          <h3 class="text-2xl md:text-4xl font-extrabold">קצת עליי</h3>
+          <p class="mt-4 text-slate-700 dark:text-slate-200 leading-8">סטודנט/ית שנה שלישית למדמ"ח ומתמטיקה (מסלול אלגוריתמים). בונה אפליקציות ווב ו‑AI מקצה לקצה, משלב/ת UX מדויק עם ארכיטקטורה נקייה. אוהב/ת לפתור בעיות קשות וללמוד כל יום משהו חדש.</p>
+          <ul class="mt-6 grid md:grid-cols-2 gap-3 text-sm">
+            <li class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-emerald-500"></span> ניסיון עם פרויקטים אמיתיים בפרודקשן</li>
+            <li class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-sky-500"></span> קוד נקי, בדיקות ואבטחה (Helmet/CORS/JWT)</li>
+            <li class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-indigo-500"></span> אלגוריתמים ושיפור ביצועים</li>
+            <li class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-pink-500"></span> עבודה עצמאית וצוותית</li>
+          </ul>
+        </div>
+        <div class="rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6">
+          <h4 class="font-bold">לינקים מהירים</h4>
+          <div class="mt-4 flex flex-col gap-3 text-sky-600">
+            <a class="hover:underline" href="https://github.com/Tairsal" target="_blank">GitHub</a>
+            <a class="hover:underline" href="https://www.linkedin.com/in/tair-salomi-022456151/" target="_blank">LinkedIn</a>
+            <a class="hover:underline" href="#contact">אימייל</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="reveal text-center">
+        <h3 class="text-2xl md:text-4xl font-extrabold">בואו נדבר</h3>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">אשמח לחיבור מקצועי, שיחה על תפקיד רלוונטי, או פידבק על פרויקט.</p>
+      </div>
+      <form onsubmit="sendMail(event)" class="reveal mt-8 grid gap-4">
+        <div class="grid md:grid-cols-2 gap-4">
+          <input required name="name" class="px-4 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="שם מלא"/>
+          <input required type="email" name="email" class="px-4 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="אימייל"/>
+        </div>
+        <textarea required name="message" rows="5" class="px-4 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="הודעה"></textarea>
+        <button class="justify-self-start px-6 py-3 rounded-2xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90">שליחה</button>
+        <p id="sent" class="hidden text-emerald-600">הודעה נשלחה! תודה 🙌</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 text-center text-sm text-slate-500 dark:text-slate-400 border-t border-slate-200/60 dark:border-slate-700/70">
+    <div class="max-w-6xl mx-auto px-4">© <span id="year"></span> תאיר סלומי · נבנה ב‑Tailwind</div>
+  </footer>
+
+  <!-- Project Modals -->
+  <div id="modal-ahavtiya" class="modal hidden fixed inset-0 z-50 p-4 bg-black/40">
+    <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-2xl">
+      <div class="flex items-start gap-4">
+        <h5 class="text-xl font-bold flex-1">Ahavtiya E‑commerce</h5>
+        <button class="px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-800" data-close>סגירה</button>
+      </div>
+      <p class="mt-3 text-slate-600 dark:text-slate-300">חנות אונליין עם קטלוג דינמי, סל ותשלום, אימות משתמשים JWT, העלאת תמונות/וידאו ל‑Cloudinary, ודשבורד ניהול. כולל ChatBot AI המבצע חיפוש סמנטי בקטלוג (Vector Search).</p>
+      <ul class="mt-4 grid md:grid-cols-2 gap-2 text-sm">
+        <li>Frontend: React + Bootstrap/Tailwind</li>
+        <li>Backend: Node/Express</li>
+        <li>DB: MongoDB (Atlas)</li>
+        <li>CI/CD: GitHub Actions (אופציונלי)</li>
+      </ul>
+      <div class="mt-4">
+        <a class="text-sky-600 hover:underline" href="https://github.com/Tairsal/Ahavtiya" target="_blank">GitHub לפרויקט</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-yelp" class="modal hidden fixed inset-0 z-50 p-4 bg-black/40">
+    <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-2xl">
+      <div class="flex items-start gap-4">
+        <h5 class="text-xl font-bold flex-1">YelpCamp WebApp</h5>
+        <button class="px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-800" data-close>סגירה</button>
+      </div>
+      <p class="mt-3 text-slate-600 dark:text-slate-300">אפליקציה המאפשרת יצירה וניהול של מחנות, הוספת ביקורות, הרשאות למשתמשים, ושילוב מפות ותמונות. תרגול מלא של MVC עם Express ו‑MongoDB.</p>
+      <ul class="mt-4 grid md:grid-cols-2 gap-2 text-sm">
+        <li>Server: Node/Express + EJS</li>
+        <li>DB: MongoDB</li>
+        <li>Auth: Roles/Permissions</li>
+        <li>Upload: Cloudinary</li>
+      </ul>
+      <div class="mt-4">
+        <a class="text-sky-600 hover:underline" href="https://github.com/Tairsal/YelpCamp" target="_blank">GitHub לפרויקט</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-drt" class="modal hidden fixed inset-0 z-50 p-4 bg-black/40">
+    <div class="max-w-3xl mx-auto bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-2xl">
+      <div class="flex items-start gap-4">
+        <h5 class="text-xl font-bold flex-1">DRT – תחבורה לפי ביקוש</h5>
+        <button class="px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-800" data-close>סגירה</button>
+      </div>
+      <p class="mt-3 text-slate-600 dark:text-slate-300">סימולטור ואלגוריתם שיבוץ: בחירת רכב מיטבית לפי זמן נסיעה (Directions API), אילוצי מגדר ושילוב, וקליטת נוסע נוסף אם הוא בתוך 0.5 ק"מ מהמסלול. אנימציית רכב על המפה ו‑ETA משופר לעומת חמדני.</p>
+      <ul class="mt-4 grid md:grid-cols-2 gap-2 text-sm">
+        <li>Frontend: React</li>
+        <li>Backend: FastAPI (Python)</li>
+        <li>Maps: Google Maps APIs</li>
+        <li>Algo: Greedy vs Optimal</li>
+      </ul>
+      <div class="mt-4">
+        <a class="text-sky-600 hover:underline" href="https://github.com/Tairsal/DRT-Plus" target="_blank">GitHub לפרויקט</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Dark mode persistence
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      root.classList.add('dark');
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('sun').classList.remove('hidden');
+        document.getElementById('moon').classList.add('hidden');
+      });
+    }
+
+    document.getElementById('themeBtn').addEventListener('click', () => {
+      root.classList.toggle('dark');
+      const dark = root.classList.contains('dark');
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+      document.getElementById('sun').classList.toggle('hidden', !dark);
+      document.getElementById('moon').classList.toggle('hidden', dark);
+    });
+
+    // Scroll progress
+    const progress = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const height = document.body.scrollHeight - window.innerHeight;
+      progress.style.width = Math.min(100, (scrolled / height) * 100) + '%';
+    });
+
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    },{ threshold: 0.15 });
+    revealEls.forEach(el=>io.observe(el));
+
+    // Modals
+    document.querySelectorAll('[data-open]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-open');
+        document.getElementById(id).classList.remove('hidden');
+      })
+    });
+    document.querySelectorAll('[data-close]').forEach(btn => {
+      btn.addEventListener('click', () => btn.closest('.modal').classList.add('hidden'))
+    });
+    document.querySelectorAll('.modal').forEach(m => {
+      m.addEventListener('click', (e) => { if (e.target === m) m.classList.add('hidden') })
+    });
+
+    // Contact form (mailto)
+    function sendMail(e){
+      e.preventDefault();
+      const f = e.target;
+      const name = encodeURIComponent(f.name.value);
+      const email = encodeURIComponent(f.email.value);
+      const msg = encodeURIComponent(f.message.value);
+      const subject = `יצירת קשר מהפורטפוליו – ${name}`;
+      const body = `שם: ${name}%0D%0Aאימייל: ${email}%0D%0A%0D%0Aהודעה:%0D%0A${msg}`;
+      window.location.href = `mailto:your.email@example.com?subject=${subject}&body=${body}`;
+      document.getElementById('sent').classList.remove('hidden');
+      f.reset();
+    }
+    window.sendMail = sendMail;
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
